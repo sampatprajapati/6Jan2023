@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS CRUD</title>
+        <style></style>
+        <script></script>
+    </head>
+    <body>
+        <form>
+            <input name="name" type="text" placeholder="Enter your Name" />
+            <input
+                name="surname"
+                type="text"
+                placeholder="Enter your Surname"
+            />
+            <input
+                name="address"
+                type="text"
+                placeholder="Enter your Address"
+            />
+            <input type="button" value="Save" onclick="save('OK')" />
+        </form>
+        <hr />
+        <table border="1" id="stable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sampat</td>
+                    <td>prajapati</td>
+                    <td>Kanawati</td>
+                    <td>
+                        <button>View</button>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            // CRUD = Create, Read, Update/View, Delete
+            // There are 2 ways to define a function-
+            // 1. old way
+            function fun1() {
+                alert("hello");
+            }
+            // 2.  New way Fat Arrow =>   introduced in 2015 in ES6
+            let x; // x is a global variable
+            let n = document.querySelector('input[name = "name"]');
+            let sn = document.querySelector('input[name = "surname"]');
+            let add = document.querySelector('input[name = "address"]');
+
+            let tbdy = document.querySelector("table#stable tbody");
+
+            let save = () => {
+                alert("save");
+                let y; // y is a Local Variable
+                console.log(n.value);
+                console.log(sn.value);
+                console.log(add.value);
+                console.log(tbdy);
+                tbdy.innerHTML += `<tr>
+                                        <td>${n.value}</td>
+                                        <td>${sn.value}</td>
+                                        <td>${add.value}</td>
+                                        <td>
+                                            <button>View</button>
+                                            <button>Edit</button>
+                                            <button onclick="deleteElement(this)">Delete</button>
+                                        </td>
+                                    </tr>`; // Append Technique
+                n.value = sn.value = add.value = "";
+            };
+            let deleteElement = (a) => {
+                //alert("Hurrey");
+                //console.log(z);
+                a.closest("tr").remove();
+                console.log(a.closest("tr"));
+            };
+        </script>
+    </body>
+</html>
